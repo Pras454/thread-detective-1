@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/*
+ * Thread Detective visual identity: a detective's case file.
+ * Warm paper, dark ink, evidence-red accents, serif display type.
+ * Deliberately NOT a generic gradient-card UI.
+ */
+@theme {
+  --color-paper: #f7f2e6;
+  --color-paper-deep: #eee6d2;
+  --color-card: #fffdf6;
+  --color-ink: #23201a;
+  --color-ink-soft: #5d554a;
+  --color-ink-faint: #968c7d;
+  --color-evidence: #b3261e;
+  --color-evidence-deep: #8f1d17;
+  --color-brass: #a8763e;
+  --color-solved: #2e7d32;
+  --color-night: #171410;
+  --color-night-deep: #100d0a;
+  --color-night-card: #221d16;
+
+  --font-display: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    sans-serif;
+}
+
+html {
+  background-color: var(--color-paper);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: var(--color-night-deep);
+  }
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* A case-file card: double rule, like a folder tab edge. */
+.case-file {
+  border: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
+  outline: 3px double color-mix(in srgb, var(--color-ink) 22%, transparent);
+  outline-offset: 3px;
+}
+
+/* Small rotated "tape" strip used to pin evidence cards. */
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 72px;
+  height: 18px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: color-mix(in srgb, var(--color-brass) 45%, transparent);
+  border-left: 1px dashed color-mix(in srgb, var(--color-ink) 25%, transparent);
+  border-right: 1px dashed color-mix(in srgb, var(--color-ink) 25%, transparent);
+  opacity: 0.75;
+}
